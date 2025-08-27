@@ -458,7 +458,293 @@ for key, value in voiture.items():
     print(f"clé: {key}: ,{value}")
 ```
 
+```python 
+def carnet_contact():
+    contact = {
+        "nom": input("Entrez votre nom: "),
+        "telephone": input("Entrez votre telephone: "),
+        "mail": input("Entrez votre mail: ")
+    }
+
+    print(" ")
+    print("Votre Récapitulatif")
+    for i, value in contact.items():
+        print(f"{i}: {value}")
+
+if __name__ == '__main__':
+    carnet_contact()
+
+```
+```python
+eleve = {
+    "benoit": "15",
+    "kevin": "5",
+    "lucas": "10"
+}
+
+search_student = input("Recherchez un étudiant: ").lower()
+
+if search_student in eleve:
+    print(f"La note de {search_student} est de {eleve[search_student]}")
+else:
+    print("Eleve inconnu")
+```
+## Les listes
+
+```python
+prenoms = ["Bob","Tom","Sarah"]
+
+print(prenoms)
+
+
+#afficher l'index premiere position commence à 0
+print(prenoms[0])
+
+#afficher la valeur du dernier element (-1)
+print(prenoms[-1])
+
+#parcourir le tableau avec une boule for
+for prenom in prenoms:
+    print(prenom)
+
+#longueur d'un tableau => fonction len(list)
+print (len(prenoms))
+
+#ajouter un element à la fin de la list => append
+prenoms.append("Toto")
+
+#ajouter un element x à l'index i =>insert(i,x)
+prenoms.insert(0,"Titi")
+print(prenoms)
+
+#supprimer le dernier element
+prenoms.pop()
+print(prenoms)
+
+#supprimer la premiere occurence de x => methode remove(x)
+prenoms.remove("Bob")
+print(prenoms)
+```
+```python
+#Creer une list de notes avec les valeurs : 12, 15, 8, 19, 10
+
+notes = [12, 15, 8, 19, 10]
+
+# 1. afficher la note la plus elevé max(list) et la plus basse min(list)
+print("Note la plus élevée", max(notes))
+print("Note la plus basse", min(notes))
+
+# 2. Calculer et afficher la moyenne (soit en utilisant for soit avec une fonction)
+#avec la fonction sum
+print(sum(notes)/len(notes))
+
+#version avec une boucle
+somme = 0
+for note in notes:
+    somme += note
+moyenne =  somme/len(notes)
+
+print(f"la moyenne est de {moyenne} ")
+
+# 3. ajouter une nouvelle note en fin de tableau et afficher le tableau final
+notes.append(13)
+print(notes)
+```
+
+```python
+#declarer un ensemble
+animals = {"oiseau", " chat", "chien"}
+
+print(animals)
+
+#LIST DE METHODES UTILES
+
+#ajouter un element : methode add(element)
+animals.add("castor")
+print(animals)
+
+
+#suppr un element : methode remove(element)
+animals.remove("castor")
+print(animals)
+
+#verifie si une vbaleur est presente dans un set
+print("chien" in animals)
+print("castor" in animals)
+
+
+#OPERATIONS 
+notesA = {1,2,3,4}
+notesB = {3,4,5,6}
+
+#Union de A et B (rassemble les 2 et elimine les doublons) |
+print (notesA | notesB)
+
+#Intersection de A et B (rassemble les elements en commun uniquemeent et elimine les doublons) &
+print (notesA & notesB)
+
+#Difference de A et B -
+print (notesA - notesB)
+
+#Difference exclusif : ^
+print (notesA ^ notesB)
+```
+
+## Exercice:
+
+```python
+# Liste de mots interdits
+liste = ["spam", "arnaque", "escroquerie"]
+
+# Demande à l’utilisateur de saisir un message
+msg = input("Entrez un message : ").lower().split(" ")
+
+# Vérifie si un mot interdit est présent
+bad_word = False
+for mot in liste:
+    if mot in msg:
+        bad_word = True
+        break
+
+# Affiche le résultat
+if bad_word:
+    print("Message rejeté")
+else:
+    print("Message accepté")
+
+```
+
+##Correction: 
+
+```python
+
+# 1. Demande à l'utilisateur de saisir plusieurs prénoms, séparés par des virgules.
+# Exemple: "Alice,Bob,Alice,Tom,Bob«
+noms = input("saisir plusieurs noms séparées par des ',' ")
+tableauNoms = noms.split(",")
+
+# Transforme la chaîne en liste avec .split(',').
+
+# Convertis la liste en set pour éliminer les doublons.Affichele set obtenu.
+listNoms = set(tableauNoms)
+
+print(listNoms)
+
+# 2. Crée deux sets :
+groupe_a= {"Alice", "Bob", "Claire"}
+groupe_b= {"Claire", "David", "Emma"}
+# Affiche :Les personnes dans les deux groupes.
+print(groupe_a & groupe_b)
+
+# Les personnes unique a chaque groupe 
+print(groupe_a - groupe_b)
+
+# union des 2 listes sans doublons
+print(groupe_a | groupe_b)
+
+
+# 3. Crée une liste de mots interdits : ["spam", "arnaque", "escroquerie"].
+# Demande à l’utilisateur de saisir un message.
+# Si un mot interdit est trouvé dans le message, affiche "Message rejeté", 
+# sinon "Message accepté".
+# Astuce : utiliser une boucle + in.*/
+
+motsInterdit ={"spam", "arnaque","escroquerie"}
+
+message = input("veuillez saisir une phrase : ")
+
+#on convertir de str (minuscule) -> list -> set
+mots_message = set(message.lower().split(" "))
+
+#verifier avec une intersection
+if mots_message & motsInterdit:
+    print("message non valide")
+else:
+    print("messsage valide")
+```
+## Exercice
+```python
+#Gestion d'un club de sport : Gerer les adhérents et leur informations
+
+# choisir quand utiliser une liste, un dictionnaire, ou un ensemble pour chaque partie du problème
+
+#1. Stocker les prénoms des adhérents "Bob", "Toto", "Tata", "Titi", "Bob" (Bob s'est inscrit 2 fois...)
+#Liste car doublons
+adherent = ["Bob", "Toto", "Tata", "Titi", "Bob"]
+
+#  Afficher la liste des adhérents
+
+print(f"Liste des adhérents actuels: \n")
+for ad in adherent:
+    print(f"{ad}")
+
+# 2. Supprimer les doublons et afficher la liste finale*
+adherent = set(adherent)
+
+print(f"Nouvelle liste des adhérents: \n")
+
+
+# 3. Pour chaque adhérent on veut stocker son âge et son sport préféré
+infos = {
+    "Bob": {"age": 25, "sport": "hockey"},
+    "Toto": {"age": 28, "sport": "rugby"}
+}
+
+# afficher l'age de Bob
+
+print(f"Age de Bob: {infos['Bob']['age']}, sport favori {infos['Bob']['sport']} ")
+
+# changer son sport favori en "tennis"
+
+
+#4. Rechercher :
+# ajouter un adhérent "David" sport "natation"
+```
+
+
+## Correction
+```python
+#Gestion d'un club de sport : Gerer les adhérents et leur informations 
+
+# choisir quand utiliser une liste, un dictionnaire, ou un ensemble pour chaque partie du problème
+
+#1. Stocker les prénoms des adhérents "Bob", "Toto", "Tata", "Titi", "Bob" (Bob s'est inscrit 2 fois...)
+#  Afficher la liste des adhérents dans l'ordre
+
+#ici on veut autoriser les doublons, l'ordre d'inscription peut etre important => list 
+adherents=["Bob", "Toto", "Tata", "Titi", "Bob"]
+print (f"Liste initiale : {adherents}")
+
+
+# 2. Supprimer les doublons et afficher la liste finale 
+#on ne veut pas de doublons => set
+adherents_unique = set(adherents)
+print(adherents_unique)
+
+# 3. Pour chaque adhérent on veut stocker son âge et son sport préféré
+#on veut stocker des données ordonnées pour chaque adherent => dictionnaire (de dictionnaire)
+
+infos_adherent = {
+    "Bob" : {"age" : 25, "sport" : "hockey"},
+    "Toto" : {"age" : 45, "sport" : "majong"}
+}
+
+#4. Rechercher :
+# afficher l'age de Bob
+print("Age de bob : ", infos_adherent["Bob"]["age"])
+# changer son sport favori en "tennis"
+infos_adherent["Bob"]["sport"] = "tennis" 
+print("nouveau sport de bob : ", infos_adherent["Bob"]["sport"])
+# ajouter un adhérent "David" sport "natation"
+infos_adherent["David"] = {"age" : 72, "sport" : "natation"}
+
+#afficher les infos de David
+print(infos_adherent["David"])
+```
+
 ---
+
+
 
 ## 📖 Notes Importantes
 
