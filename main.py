@@ -1,10 +1,14 @@
-x = int(input("Entrer un nombre début: "))
-y = int(input("Entrer un nombre fin: "))
+def carnet_contact():
+    contact = {
+        "nom": input("Entrez votre nom: "),
+        "telephone": input("Entrez votre telephone: "),
+        "mail": input("Entrez votre mail: ")
+    }
 
-for i in range(x, y+1):
-    if i%2 == 0:
-        print(f"{i} est pair")
-    elif i%2 == 1:
-        print(f"{i} est impair")
+    print(" ")
+    print("Votre Récapitulatif")
+    for i, value in contact.items():
+        print(f"{i}: {value}")
 
-print("Fin")
+if __name__ == '__main__':
+    carnet_contact()

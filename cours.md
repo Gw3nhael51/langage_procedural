@@ -425,6 +425,41 @@ for x in range(100,0,-1):
 
 ---
 
+```python 
+x = int(input("Entrer un nombre début: "))
+y = int(input("Entrer un nombre fin: "))
+
+for i in range(x, y+1):
+    if i%2 == 0:
+        print(f"{i} est pair")
+    elif i%2 == 1:
+        print(f"{i} est impair")
+
+print("Fin")
+```
+
+## Dictionnaires
+
+```python
+voiture = {
+  "marque": "Ford",
+  "modele": "Mustang",
+  "annee": 1964
+}
+
+# print(voiture["brand"], voiture["model"], voiture["year"])
+
+for i in voiture:
+    print(i, voiture[i])
+print("Fin")
+print(" ")
+
+for key, value in voiture.items():
+    print(f"clé: {key}: ,{value}")
+```
+
+---
+
 ## 📖 Notes Importantes
 
 ### Opérateurs logiques
