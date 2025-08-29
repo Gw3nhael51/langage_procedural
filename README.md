@@ -1009,12 +1009,53 @@ if __name__ == '__main__':
     cree_utilisateur("Tom", "22")
 ```
 
-## Correction:
+## Exercice:
 
 ```python
+    # Créer une fonction facture(*articles, **options) qui :
+# Calcule le prix total d’une série d’articles (passés en *args).
 
+def facture(*articles, **options):
+    total = 0
+
+    tva = options.get('tva', 0)
+    for article in articles:
+        total += article
+
+    calcul_tva = total + total(tva/100)
+
+    return calcul_tva
+
+print(facture(10, 20, TVA = 20))
 ```
+## Correction
 
+```python
+def facture(*articles, **options):
+    # avec  une boucle
+    total = 0
+
+    # recuperate la valeur de notre clé TVA
+    tva = options.get("TVA", 0)
+
+    # recuperate la valeur de notre clé remise
+    sale = options.get("remise", 0)
+
+    # boucler le total de nos articles
+    for article in articles:
+        total += article
+
+    calculAvecTVA = total + total * (tva / 100)
+    calculAvecRemise = calculAvecTVA - (calculAvecTVA * (sale / 100))
+
+    return calculAvecRemise
+
+    # avec sum
+    # total = sum(articles)
+
+
+print(facture(10, 20, TVA=20, remise=10))
+```
 ## 📖 Notes Importantes
 
 ### Opérateurs logiques
