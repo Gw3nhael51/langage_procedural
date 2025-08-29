@@ -741,10 +741,279 @@ infos_adherent["David"] = {"age" : 72, "sport" : "natation"}
 #afficher les infos de David
 print(infos_adherent["David"])
 ```
+## Exercice bibliothèque
+
+```python
+#Gestion d'une bibliotheque
+
+# 1. Creer un "ensemble de données " qui contient les livres de la bibliotheque (peut afficher les doublons )
+bob = {
+    "library": ["Harry Potter", "Le python pour les nuls", "PHP pour les nuls", "Naruto", "Harry Potter"]
+}
+
+# 2. choisir un " ensemble de données " qui n'affiche que les titres uniques
+print("Livres empruntés par Bob: \n")
+for book in set(bob["library"]):
+    print("-", book)
+print("\n")
+
+# 3. choisir un "ensemble de données " qui associe un livre a un adherent ayant emprunté
+
+alice = {
+    "library": ["python", "R"]
+}
+
+tom = {
+    "library": ["tomtom & nana", "titin", "garfield"]
+}
+
+emprunts = {
+    "bob": bob["library"],
+    "alice": alice["library"],
+    "tom": tom["library"]
+}
+
+# 4. Recherche quel livre "Bob" a emprunté (via get par exemple)
+print(f"Bob a emprunté: {bob.get('library')} \n")
+
+# 5. Modifier le livre de "Bob" en "S'incrire a un club pour les nuls"
+print(bob["library"].append("S\'inscrire à un club pour les nuls \n"))
+
+# 6. Ajouter un nouveau lecteur "David" qui emprunte "LSDA" (soit via clé soit via update)
+emprunts['David'] = ["Le Seigneur Des Anneaux \n"]
+
+# 7. Supprimer un lecteur (del)
+del emprunts["alice"]
+
+#8.Afficher la liste finale
+print("Liste finale")
+for emprunt in emprunts.items():
+    print(emprunt)
+
+```
+
+## Correction exo bibliothèque
+```python
+#Exercice : gestion d'une bibliothèque 
+
+# 1. Creer un "ensemble de données " qui contient les livres de la bibliotheque (peut afficher les doublons )
+livres_list = ["Harry Potter", "Le rouge & le noir", "Le petit prince", "Harry Potter"]
+print(f"Liste initale : {livres_list}")
+
+# 2. choisir un " ensemble de données " qui n'affiche que les titre unique 
+livres_unique = set(livres_list)
+print(f"Liste initale : {livres_unique}")
+
+
+# 3. choisir un "ensemble de données " qui associe un livre a un adherent ayant emprunté
+lecteurs = {
+    "Tom" : "Harry Potter",
+    "Bob" : "Le petit prince",
+    "Sarah" : "le rouge & le noir"
+}
+
+
+# 4. Recherche quel livre "Bob" a emprunté (via get par exemple )
+#via get => gere le cas ou la clé n'existe pas
+print(lecteurs.get("Bob"))
+
+#via l'accès direct
+print(lecteurs["Bob"])
+
+# 5. Modifier le livre de "Bob" en "S'incrire a un club pour les nuls" (soit via clé soit via update)
+lecteurs["Bob"] = "S'isncrire à un club pour les nuls"
+
+#avec update => pratique si on veut modifier ou ajouter plusieurs clés 
+lecteurs.update({"Bob" : "S'inscrire à un club pour les nuls"})
+
+# 6. Ajouter un nouveau lecteur "David" qui emprunte "LSDA" 
+
+#via l'accès direct
+lecteurs["David"] = "Le seigneur des anneaux"
+
+#avec update (sert aussi à ajouter)
+lecteurs.update({"David": "Le seigneur des anneaux"})
+
+
+# 7. Supprimer un lecteur (del)
+del lecteurs["Tom"]
+
+
+# 8. Afficher la liste finale
+for nom, livre in lecteurs.items():
+    print(f"{nom} a emprunté {livre}")
+```
 
 ---
 
+## Exercice entrée de notes
 
+```python
+# Fonction pour saisir les notes
+def saisir_notes():
+    notes = []
+
+    while True:
+        try:
+            note = int(input("Entrez une note (ou -1 pour terminer) : "))
+            if note == -1:
+                break
+            elif 0 <= note <= 20:
+                notes.append(note)
+            else:
+                print("Veuillez entrer une note entre 0 et 20.")
+        except ValueError:
+            print("Entrée invalide. Veuillez entrer un nombre.")
+    return notes
+
+
+# Fonction pour calculer la moyenne
+def calculer_moyenne(notes):
+    if notes:
+        return sum(notes) / len(notes)
+    else:
+        return None
+
+
+# Crée une fonction afficher_resultat(moyenne) qui affiche un message formaté :
+
+def afficher_resultat(moyenne):
+    if moyenne is None:
+        print("Aucune note saisie.")
+    elif moyenne >= 16:
+        print("Très bien")
+    elif moyenne >= 14:
+        print("Bien")
+    elif moyenne >= 12:
+        print("Assez bien")
+    elif moyenne >= 10:
+        print("Passable")
+    else:
+        print("Insuffisant")
+
+
+if __name__ == '__main__':
+    notes = saisir_notes()
+    print(f"\n Voici les notes : {notes}")
+
+    moyenne = calculer_moyenne(notes)
+    print(f"\n Voici la moyenne : {moyenne}")
+
+    print(f"Mention: {afficher_resultat(moyenne)}")
+
+```
+
+## Correction:
+
+```python
+# EXERCICE LISTE DE NOTES
+
+# Crée une fonction saisir_notes() qui demande à l’utilisateur d’entrer plusieurs notes 
+# (saisie terminée quand l’utilisateur tape -1). La fonction renvoie la liste des notes.
+
+def saisirNote():
+    notes = []
+    note = 0
+
+    #tant que la saisie n'est pas -1 on continue de demander la saisie et d'alimenter(append) la list
+    while note != -1:
+        note = float(input("Entrez une note, ou -1 pour terminer la saisie"))
+        #empeche que -1 rentre dans le tableau 
+        if note != -1:
+            notes.append(note)
+    #la fonction renvoi le tableau de notes
+    return notes
+
+
+# Crée une fonction moyenne(notes) qui reçoit une liste de notes et renvoie la moyenne.
+# verifier que le tableau n'est pas vide 
+
+def moyenne(notes):
+    if len(notes) != 0:
+        res = sum(notes) / len(notes)
+    else:
+        res = "tableau vide..."
+    return res
+
+
+
+
+# Crée une fonction afficher_resultat(moyenne) 
+# qui affiche un message formaté :"Très bien" si la moyenne ≥ 16
+# "Bien" si la moyenne ≥ 14
+# "Assez bien" si la moyenne ≥ 12
+# "Passable" si la moyenne ≥ 10
+# "Insuffisant" sinon
+
+def afficher_resultat(moyenne):
+    if moyenne >= 16:
+        print(f"Moyenne {moyenne} est très bien")
+    elif moyenne >= 14:
+        print(f"Moyenne {moyenne} est bien")    
+    elif moyenne >= 12:
+        print(f"Moyenne {moyenne} est assez bien") 
+    elif moyenne >= 10:
+        print(f"Moyenne {moyenne} est passable")
+    else:
+        print(f"Moyenne {moyenne} est insuffisant")
+        
+
+
+# Dans le programme principal :
+#Appeler saisir_notes()
+notes = saisirNote()
+
+#Calculer la moyenne avec moyenne()
+moy = moyenne(notes)
+
+#Afficher le résultat avec afficher_resultat()
+afficher_resultat(moy)
+```
+---
+```python
+
+#definir une fonction sans parametre
+def sayHello():
+    print("Hello")
+
+#definir une fonction sans parametre
+def sayHelloName(firstname, name):
+    print(f"Hello {firstname} {name}")
+
+#meme principe avec un return 
+def multiply(x,y):
+    return (x*y)
+
+#fonction avec valeur par defaut (ici age)
+def sayHelloName(firstname, name, age = 12):
+    print(f"Bonjour {firstname} {name}, tu as {age} ans")
+
+
+#les appeler
+sayHello()
+sayHelloName("Tim", "Dupont")
+
+#appel de fonction avec keywords
+sayHelloName(name = "Dupont", firstname="Dupont")
+
+print(multiply(2,3))
+```
+
+## Exercice:
+```python
+# Fonction creer_utilisateur
+def cree_utilisateur(nom, age, pays="France"):
+    print(f"{nom}, is {age} years old and living in {pays}")
+
+if __name__ == '__main__':
+    cree_utilisateur("Tom", "22")
+```
+
+## Correction:
+
+```python
+
+```
 
 ## 📖 Notes Importantes
 
