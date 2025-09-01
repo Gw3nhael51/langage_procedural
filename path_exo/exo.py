@@ -6,13 +6,15 @@ from pathlib import Path
 
 fichier = Path("notes.txt")
 
+with open(fichier, "w", encoding="utf-8") as f:
+    f.write("Je t\'ai hacké")
+
 if fichier.exists():
     with open(fichier, "r", encoding="utf-8") as f:
         content = f.read()
         print(content)
 else:
     print("Le fichier notes.txt est introuvable.")
-
 
 # Si non, affiche : "Le fichier notes.txt est introuvable.«
 # •
