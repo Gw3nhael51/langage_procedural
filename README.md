@@ -1082,3 +1082,60 @@ print(facture(10, 20, TVA=20, remise=10))
 - Module `re` pour la validation avancée de chaînes
 - Patterns pour définir des formats précis
 
+## cours
+```python
+
+#liste de prenoms
+prenoms =[ "Shahed", "Cedric", "GwenGPT", "Babou"]
+prenoms2 = ["Jean", "Jacques", "Paul", "Paula"] 
+
+majuscules = []
+
+#version avec boucle 
+# for prenom in prenoms:
+#    majuscules.append(prenom.upper)
+
+
+
+#constructeur de list (sans conditions)
+majuscules = [prenom.upper() for prenom in prenoms]
+
+
+#idem mais avec condition, on verifie chaque ocurrence(prenom) de la list
+majuscules = [prenom.upper() for prenom in prenoms if prenom == "Shahed"] 
+
+
+print(majuscules)
+
+```
+
+## Exercice:
+
+```python
+# Créez une liste nombres contenant les entiers de 1 à 10.
+liste = [1,2,3,4,5,6,7,8,9,10]
+
+# A Une nouvelle liste carrés contenant les carrés de ces nombres.
+for i in liste:
+    print(f"{i**2}")
+
+print("\n")
+
+# B Une nouvelle liste paire ne contenant que les nombres pairs.
+liste_pair = []
+
+# C Une liste pairs_carrés_contenant les carrés uniquement des nombres pairs.
+for i in liste :
+    if i % 2 == 0:
+        print(f"{i} est pair")
+
+print("\n")
+# D Bonus : créez une liste table_multiplication_contenant tous les produits x*y pour x et y allant de 1 à 3.
+
+table_multip = [
+    x*y for x in range(1,10)
+    for y in range(1,10)
+]
+print(table_multip)
+```
+
