@@ -1,3 +1,5 @@
+# prises de notes + cours généré
+
 # 🎯 Objectifs du Cours
 - Comprendre les bases du langage Python.
 - Savoir mettre en place un environnement de développement et déboguer du code.
