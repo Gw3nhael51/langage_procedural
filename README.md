@@ -407,5 +407,3 @@ print(table_multip)
 - **Pratique les boucles et conditions** : Ce sont des éléments clés.
 - **Gère les erreurs** : Utilise `try/except` pour éviter les plantages.
 - **Utilise des fonctions** : Pour structurer ton code et le rendre réutilisable.
-
-Bonne chance pour ton DS, Gwenhael ! Si tu as des questions ou besoin de précisions sur un point, n'hésite pas à demander. 😊
