@@ -26,6 +26,10 @@ def main():
         print("Ce nombre n'est pas entre 10 et 20")
 
     # Exo 5.	Vérifier si un nombre est pair ou impair avec un if en une ligne.
+    if x%2==0:
+        print("Ce nombre est pair")
+    else:
+        print("Ce nombre n'est pas paire")
 
     # Exo 6.	Demander une chaîne et afficher sa première et dernière lettre.
 
